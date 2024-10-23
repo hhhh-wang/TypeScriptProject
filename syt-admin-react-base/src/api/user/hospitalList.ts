@@ -1,5 +1,5 @@
 import { request } from "@utils/http"
-import { IDistrictList, IHospitalDetail, IHospitalListParams, IHospitalListResponse } from "./model/hospitalListTypes"
+import { IDepartmentList, IDistrictList, IHospitalDetail, IHospitalListParams, IHospitalListResponse } from "./model/hospitalListTypes"
 /**
  * 根据id 获取省市区列表
  * @param id  86 省  
@@ -43,4 +43,12 @@ export const getHospitalDetail = (id:string)=>{
  */
 export const changeStatus = (id:string, status:number)=>{
     return request.get<any,null>(`/admin/hosp/hospital/updateStatus/${id}/${status}`);
+}
+/**
+ * 根据医院编号 hoscode 获取医院科室列表
+ * @param hoscode 
+ * @returns 
+ */
+export const getDepartmentList = (hoscode:string)=>{
+    return request.get<any, IDepartmentList>(`/admin/hosp/department/${hoscode}`)
 }

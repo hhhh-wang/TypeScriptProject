@@ -23,7 +23,7 @@ const HospitalSet = lazy(() => import("@/pages/hopspitalSet/HospitalSet"));
 const HospitalSetAddOrUpdate = lazy(()=>import("@pages/hopspitalSet/components/AddOrUpdate"));
 const HospitalList = lazy(()=>import("@pages/hospitalList/HospitalList"));
 const HospitalDetail = lazy(()=>import("@pages/hospitalList/components/HospitalDetail"));
-
+const HospitalSchedule = lazy(()=>import("@pages/hospitalList/components/HospitalSchedule"));
 const load = (Comp: FC) => {
     return (
         // 因为路由懒加载，组件需要一段网络请求时间才能加载并渲染
@@ -107,6 +107,14 @@ const routes: XRoutes = [
                         },
                         element:load(HospitalDetail)
                     },
+                    {
+                        path:'/syt/hospital/hospitalList/schedule/:hoscode',
+                        //hidden:true,
+                        meta:{
+                            title:'医院详情'
+                        },
+                        element:load(HospitalSchedule)
+                    }
                 ]
             }
         ],

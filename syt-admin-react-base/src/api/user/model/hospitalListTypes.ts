@@ -84,3 +84,17 @@ export interface IHospitalDetail {
     hospital:IHospitalItem;
 }
 
+
+/**
+ * 科室每一项 对象类型
+ */
+export interface IDepartmentItem {
+    depcode: string;
+    depname: string;
+    children: IDepartmentList | null;
+    disabled?:boolean;
+}
+//科室列表类型
+export type IDepartmentList = IDepartmentItem[];
+
+
