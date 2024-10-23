@@ -18,6 +18,11 @@ const Dashboard = lazy(() => import("@pages/dashboard"));
 const NotFound = lazy(() => import("@pages/404"));
 
 
+// 引入医院管理组件
+const HospitalSet = lazy(() => import("@/pages/hopspitalSet/HospitalSet"));
+const HospitalSetAddOrUpdate = lazy(()=>import("@pages/hopspitalSet/components/AddOrUpdate"));
+const HospitalList = lazy(()=>import("@pages/hospitalList/HospitalList"));
+
 
 const load = (Comp: FC) => {
     return (
@@ -55,6 +60,46 @@ const routes: XRoutes = [
                     title: '首页'
                 },
                 element: load(Dashboard),
+            },
+            {
+                path:'/syt/hospital',
+                meta:{
+                    title:'医院管理',
+                    //icon:<ShopOutlined />
+                },
+                children:[
+                    {
+                        path:'/syt/hospital/hospitalSet',
+                        meta:{
+                            title:'医院设置'
+                        },
+                        element:load(HospitalSet)
+                    },
+                    {
+                        path:'/syt/hospital/hospitalSet/components/add',
+                        hidden:true,
+                        meta:{
+                           title:'添加医院'
+                        },
+                        element:load(HospitalSetAddOrUpdate)
+                    },
+                    {
+                        path:'/syt/hospital/hospitalSet/components/edit/:id',
+                        hidden:true,
+                        meta:{
+                           title:'编辑医院'
+                        },
+                        element:load(HospitalSetAddOrUpdate)
+                    },
+
+                    {
+                        path:'/syt/hospital/hospitalList',
+                        meta:{
+                            title:'医院列表'
+                        },
+                        element:load(HospitalList)
+                    },
+                ]
             }
         ],
     },
