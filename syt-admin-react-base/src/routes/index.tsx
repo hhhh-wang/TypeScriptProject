@@ -22,7 +22,7 @@ const NotFound = lazy(() => import("@pages/404"));
 const HospitalSet = lazy(() => import("@/pages/hopspitalSet/HospitalSet"));
 const HospitalSetAddOrUpdate = lazy(()=>import("@pages/hopspitalSet/components/AddOrUpdate"));
 const HospitalList = lazy(()=>import("@pages/hospitalList/HospitalList"));
-
+const HospitalDetail = lazy(()=>import("@pages/hospitalList/components/HospitalDetail"));
 
 const load = (Comp: FC) => {
     return (
@@ -98,6 +98,14 @@ const routes: XRoutes = [
                             title:'医院列表'
                         },
                         element:load(HospitalList)
+                    },
+                    {
+                        path:'/syt/hospital/hospitalList/show/:id',
+                        hidden:true,
+                        meta:{
+                            title:'医院详情'
+                        },
+                        element:load(HospitalDetail)
                     },
                 ]
             }

@@ -114,7 +114,7 @@ export default function HospitalSet() {
                 return (
                     <Space>
                         <Space>
-                            <Button type='primary' icon={<EditOutlined />} onClick={() => { navigate('/syt/hospital/hospitalSet/components/edit/' + row.id)   }} ></Button>
+                            <Button type='primary' icon={<EditOutlined />} onClick={() => { navigate('/syt/hospital/hospitalSet/components/edit/' +  + row.id)   }} ></Button>
                             <Button type='primary' icon={<DeleteOutlined />} onClick={() => { deleteById(row.id) }} danger></Button>
                         </Space>
                     </Space>
