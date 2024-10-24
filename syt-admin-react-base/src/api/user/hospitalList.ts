@@ -1,5 +1,5 @@
 import { request } from "@utils/http"
-import { IDepartmentList, IDistrictList, IHospitalDetail, IHospitalListParams, IHospitalListResponse } from "./model/hospitalListTypes"
+import { IDepartmentList, IDistrictList, IDoctorList, IHospitalDetail, IHospitalListParams, IHospitalListResponse, IScheduleResponse } from "./model/hospitalListTypes"
 /**
  * 根据id 获取省市区列表
  * @param id  86 省  
@@ -51,4 +51,27 @@ export const changeStatus = (id:string, status:number)=>{
  */
 export const getDepartmentList = (hoscode:string)=>{
     return request.get<any, IDepartmentList>(`/admin/hosp/department/${hoscode}`)
+}
+
+/**
+ * 获取医院科室排班日期分页列表数据
+ * @param page     当前页
+ * @param limit    每页几条
+ * @param hoscode  医院编号
+ * @param depcode  科室编号
+ * @returns 
+ */
+export const getScheduleList = (page: number, limit: number, hoscode: string, depcode: string) => {
+    return request.get<any, IScheduleResponse>(`/admin/hosp/schedule/getScheduleRule/${page}/${limit}/${hoscode}/${depcode}`)
+}
+
+/**
+ * 获取排班医生列表
+ * @param hoscode 
+ * @param depcode 
+ * @param workDate 
+ * @returns 
+ */
+export const getDoctorList = (hoscode: string, depcode: string, workDate: string) => {
+    return request.get<any,IDoctorList>(`/admin/hosp/schedule/findScheduleList/${hoscode}/${depcode}/${workDate}`);
 }
